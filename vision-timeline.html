@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Vision & Goals</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;800&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080b14;
+    --surface: #0d1220;
+    --surface2: #121929;
+    --border: #1e2d4a;
+    --accent: #00d4ff;
+    --accent2: #ff6b35;
+    --accent3: #7c3aed;
+    --gold: #ffd700;
+    --done: #00e676;
+    --pending: #ff9800;
+    --text: #e8edf5;
+    --muted: #5a6a82;
+    --glow: 0 0 20px rgba(0, 212, 255, 0.3);
+    --glow2: 0 0 20px rgba(255, 107, 53, 0.3);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Animated star background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 20%, rgba(0,212,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 30% 70%, rgba(124,58,237,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 60% 40%, rgba(0,212,255,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 80% 80%, rgba(255,107,53,0.3) 0%, transparent 100%),
+      radial-gradient(2px 2px at 50% 10%, rgba(255,215,0,0.2) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Grid overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  header {
+    padding: 60px 0 40px;
+    text-align: center;
+    position: relative;
+  }
+
+  .header-badge {
+    display: inline-block;
+    background: rgba(0,212,255,0.1);
+    border: 1px solid rgba(0,212,255,0.3);
+    border-radius: 2px;
+    padding: 4px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    animation: fadeSlideDown 0.6s ease both;
+  }
+
+  .header-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 8vw, 96px);
+    letter-spacing: 4px;
+    line-height: 0.9;
+    background: linear-gradient(135deg, #ffffff 0%, var(--accent) 50%, var(--accent3) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeSlideDown 0.6s 0.1s ease both;
+  }
+
+  .header-subtitle {
+    margin-top: 16px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 1px;
+    animation: fadeSlideDown 0.6s 0.2s ease both;
+  }
+
+  /* XP Bar */
+  .xp-section {
+    margin: 32px auto;
+    max-width: 500px;
+    animation: fadeSlideDown 0.6s 0.3s ease both;
+  }
+
+  .xp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .xp-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+
+  .xp-level {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--gold);
+    letter-spacing: 2px;
+  }
+
+  .xp-bar-track {
+    height: 6px;
+    background: var(--surface2);
+    border-radius: 3px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .xp-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent3), var(--accent));
+    border-radius: 3px;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+  }
+
+  .xp-bar-fill::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -2px;
+    width: 10px;
+    height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent);
+  }
+
+  .xp-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 16px;
+  }
+
+  .xp-stat {
+    text-align: center;
+  }
+
+  .xp-stat-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--text);
+    letter-spacing: 1px;
+  }
+
+  .xp-stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ── CONTROLS ── */
+  .controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+    animation: fadeSlideDown 0.6s 0.4s ease both;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+
+  .btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: var(--glow);
+    transform: translateY(-1px);
+  }
+
+  .btn-primary {
+    background: rgba(0,212,255,0.1);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .btn-primary:hover {
+    background: rgba(0,212,255,0.2);
+  }
+
+  .btn-danger {
+    border-color: #ff4444;
+    color: #ff4444;
+  }
+
+  .btn-danger:hover {
+    background: rgba(255,68,68,0.1);
+    box-shadow: 0 0 20px rgba(255,68,68,0.3);
+  }
+
+  /* ── PATHS CONTAINER ── */
+  #paths-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* ── PATH ── */
+  .path-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    animation: fadeSlideUp 0.5s ease both;
+    transition: border-color 0.2s;
+  }
+
+  .path-card.collapsed {
+    border-color: var(--border);
+  }
+
+  .path-card.collapsed .path-header {
+    border-bottom-color: transparent;
+  }
+
+  /* ── TIMELINE COLLAPSIBLE WRAPPER ── */
+  .timeline-wrapper {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .path-card.collapsed .timeline-wrapper {
+    grid-template-rows: 0fr;
+  }
+
+  .timeline-inner {
+    overflow: hidden;
+  }
+
+  .path-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+    flex-wrap: wrap;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+  }
+
+  .path-header:hover {
+    background: #151e30;
+  }
+
+  /* ── CHEVRON ── */
+  .path-chevron {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--muted);
+    font-size: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+  }
+
+  .path-card:not(.collapsed) .path-chevron {
+    transform: rotate(180deg);
+    border-color: rgba(0,212,255,0.3);
+    color: var(--accent);
+  }
+
+  /* Collapsed state — show subtle hint */
+  .path-card.collapsed .path-header {
+    opacity: 0.85;
+  }
+
+  .path-card.collapsed .path-header:hover {
+    opacity: 1;
+  }
+
+  .path-title-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+  }
+
+  .path-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    background: rgba(0,212,255,0.1);
+    border: 1px solid rgba(0,212,255,0.2);
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .path-name-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 2px;
+    color: var(--text);
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .path-name-input:focus {
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+  }
+
+  .path-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .path-progress-ring {
+    width: 48px;
+    height: 48px;
+    position: relative;
+  }
+
+  .path-progress-ring svg {
+    transform: rotate(-90deg);
+  }
+
+  .ring-bg { stroke: var(--border); }
+  .ring-fill {
+    stroke: var(--accent);
+    stroke-dasharray: 126;
+    stroke-dashoffset: 126;
+    transition: stroke-dashoffset 1s cubic-bezier(0.4,0,0.2,1);
+    filter: drop-shadow(0 0 4px var(--accent));
+  }
+
+  .ring-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    padding: 32px 28px;
+    position: relative;
+  }
+
+  /* Central line */
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 56px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--border) 10%, var(--border) 90%, transparent);
+  }
+
+  /* ── YEAR GROUP ── */
+  .year-group {
+    margin-bottom: 8px;
+  }
+
+  .year-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 4px;
+    position: relative;
+    padding-left: 72px;
+  }
+
+  .year-dot {
+    position: absolute;
+    left: 47px;
+    width: 19px;
+    height: 19px;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    box-shadow: var(--glow);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .year-dot-inner {
+    width: 7px;
+    height: 7px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  .year-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .year-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+
+  /* ── SEMESTER ITEMS ── */
+  .sems-list {
+    padding-left: 72px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-bottom: 24px;
+  }
+
+  .sem-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+    animation: fadeSlideLeft 0.4s ease both;
+  }
+
+  .sem-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--muted);
+    transition: background 0.2s;
+  }
+
+  .sem-item.done::before { background: var(--done); }
+  .sem-item.in-progress::before { background: var(--pending); }
+
+  .sem-item:hover {
+    border-color: rgba(0,212,255,0.3);
+    transform: translateX(4px);
+  }
+
+  .sem-item.done {
+    border-color: rgba(0,230,118,0.2);
+  }
+
+  .sem-item.in-progress {
+    border-color: rgba(255,152,0,0.3);
+  }
+
+  /* Connector line from timeline */
+  .sem-item::after {
+    content: '';
+    position: absolute;
+    left: -18px;
+    top: 50%;
+    width: 18px;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .status-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .sem-item.done .status-btn {
+    border-color: var(--done);
+    background: rgba(0,230,118,0.15);
+    color: var(--done);
+  }
+
+  .sem-item.in-progress .status-btn {
+    border-color: var(--pending);
+    background: rgba(255,152,0,0.15);
+    color: var(--pending);
+    animation: pulse 1.5s infinite;
+  }
+
+  .sem-name-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    cursor: text;
+    letter-spacing: 0.5px;
+  }
+
+  .sem-item.done .sem-name-input {
+    text-decoration: line-through;
+    color: var(--muted);
+  }
+
+  .sem-status-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .tag-done {
+    background: rgba(0,230,118,0.1);
+    border: 1px solid rgba(0,230,118,0.3);
+    color: var(--done);
+  }
+
+  .tag-progress {
+    background: rgba(255,152,0,0.1);
+    border: 1px solid rgba(255,152,0,0.3);
+    color: var(--pending);
+  }
+
+  .tag-pending {
+    background: rgba(90,106,130,0.1);
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+
+  .delete-item-btn {
+    width: 22px;
+    height: 22px;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--muted);
+    opacity: 0;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .sem-item:hover .delete-item-btn {
+    opacity: 1;
+    color: #ff4444;
+    border-color: rgba(255,68,68,0.3);
+  }
+
+  /* ── ADD ITEM BUTTONS ── */
+  .add-sem-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: transparent;
+    border: 1px dashed var(--border);
+    border-radius: 3px;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    width: 100%;
+    margin-top: 4px;
+  }
+
+  .add-sem-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(0,212,255,0.05);
+  }
+
+  .add-year-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px;
+    background: transparent;
+    border: 1px dashed rgba(124,58,237,0.3);
+    border-radius: 3px;
+    color: rgba(124,58,237,0.7);
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .add-year-btn:hover {
+    border-color: var(--accent3);
+    color: var(--accent3);
+    background: rgba(124,58,237,0.05);
+  }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(8,11,20,0.85);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+
+  .modal-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 32px;
+    width: 100%;
+    max-width: 480px;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    position: relative;
+  }
+
+  .modal-overlay.open .modal {
+    transform: translateY(0);
+  }
+
+  .modal-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+
+  .modal-field {
+    margin-bottom: 16px;
+  }
+
+  .modal-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .modal-input {
+    width: 100%;
+    padding: 12px 14px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .modal-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(0,212,255,0.1);
+  }
+
+  .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .icon-opt {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .icon-opt:hover, .icon-opt.selected {
+    border-color: var(--accent);
+    background: rgba(0,212,255,0.1);
+  }
+
+  .modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    padding: 14px 20px;
+    border-radius: 3px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: var(--text);
+    z-index: 200;
+    transform: translateX(120%);
+    transition: transform 0.3s ease;
+    max-width: 300px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  }
+
+  .toast.show {
+    transform: translateX(0);
+  }
+
+  .toast.success { border-left-color: var(--done); }
+  .toast.warning { border-left-color: var(--pending); }
+
+  /* ── ACHIEVEMENTS ── */
+  .achievements-bar {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+    animation: fadeSlideDown 0.6s 0.5s ease both;
+  }
+
+  .achievement {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+  }
+
+  .achievement.unlocked {
+    border-color: rgba(255,215,0,0.4);
+    color: var(--gold);
+    background: rgba(255,215,0,0.05);
+    box-shadow: 0 0 12px rgba(255,215,0,0.1);
+  }
+
+  .achievement-icon { font-size: 16px; }
+
+  /* ── EMPTY STATE ── */
+  .empty-state {
+    text-align: center;
+    padding: 80px 24px;
+    color: var(--muted);
+  }
+
+  .empty-state-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+
+  .empty-state-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .empty-state-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    line-height: 1.8;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 48px 24px 32px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+  }
+
+  footer span {
+    color: var(--accent);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeSlideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeSlideLeft {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255,152,0,0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(255,152,0,0); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  /* Floating particles */
+  .particle {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--accent);
+    pointer-events: none;
+    z-index: 0;
+    animation: float linear infinite;
+  }
+
+  @keyframes float {
+    from { transform: translateY(100vh) scale(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    to { transform: translateY(-10vh) scale(1); opacity: 0; }
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .timeline::before { left: 36px; }
+    .year-label { padding-left: 52px; }
+    .year-dot { left: 27px; }
+    .sems-list { padding-left: 52px; }
+    .timeline { padding: 24px 16px; }
+    .icon-grid { grid-template-columns: repeat(6, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Header -->
+  <header>
+    <div class="header-badge">🎯 Vision Board &amp; Goal Tracker</div>
+    <h1 class="header-title">MY JOURNEY</h1>
+    <p class="header-subtitle">// Track. Achieve. Level Up.</p>
+
+    <!-- XP Section -->
+    <div class="xp-section">
+      <div class="xp-header">
+        <span class="xp-label">⚡ Progress</span>
+        <span class="xp-level" id="level-display">LVL 1</span>
+      </div>
+      <div class="xp-bar-track">
+        <div class="xp-bar-fill" id="xp-bar" style="width: 0%"></div>
+      </div>
+      <div class="xp-stats">
+        <div class="xp-stat">
+          <div class="xp-stat-value" id="stat-done">0</div>
+          <div class="xp-stat-label">Completed</div>
+        </div>
+        <div class="xp-stat">
+          <div class="xp-stat-value" id="stat-total">0</div>
+          <div class="xp-stat-label">Total Steps</div>
+        </div>
+        <div class="xp-stat">
+          <div class="xp-stat-value" id="stat-pct">0%</div>
+          <div class="xp-stat-label">Overall</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Achievements -->
+  <div class="achievements-bar" id="achievements-bar"></div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <button class="btn btn-primary" onclick="openAddPathModal()">＋ New Path</button>
+    <button class="btn" onclick="collapseAll()">⊟ Collapse All</button>
+    <button class="btn" onclick="expandAll()">⊞ Expand All</button>
+    <button class="btn" onclick="exportData()">↓ Export</button>
+    <button class="btn" onclick="importData()">↑ Import</button>
+    <button class="btn btn-danger" onclick="clearAll()">✕ Clear All</button>
+  </div>
+
+  <!-- Paths -->
+  <div id="paths-container"></div>
+</div>
+
+<footer>
+  Built with <span>HTML · CSS · JS</span> &nbsp;|&nbsp; Auto-saved to LocalStorage &nbsp;|&nbsp; <span id="save-indicator">●</span> Saved
+</footer>
+
+<!-- Add Path Modal -->
+<div class="modal-overlay" id="add-path-modal">
+  <div class="modal">
+    <div class="modal-title">New Path</div>
+    <div class="modal-field">
+      <label class="modal-label">Path Name</label>
+      <input class="modal-input" id="new-path-name" placeholder="e.g. Bachelor of Science in CS" />
+    </div>
+    <div class="modal-field">
+      <label class="modal-label">Choose Icon</label>
+      <div class="icon-grid" id="icon-grid"></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal('add-path-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="confirmAddPath()">Create Path</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ─────────────────────────────────────────────
+// COLLAPSE STATE
+// ─────────────────────────────────────────────
+let collapsedPaths = new Set();
+
+function saveCollapsed() {
+  try { localStorage.setItem('vision_collapsed', JSON.stringify([...collapsedPaths])); } catch(e) {}
+}
+
+function loadCollapsed() {
+  try {
+    const raw = localStorage.getItem('vision_collapsed');
+    if (raw) collapsedPaths = new Set(JSON.parse(raw));
+  } catch(e) {}
+}
+
+function togglePath(pathId) {
+  if (collapsedPaths.has(pathId)) {
+    collapsedPaths.delete(pathId);
+  } else {
+    collapsedPaths.add(pathId);
+  }
+  saveCollapsed();
+  const card = document.getElementById('card-' + pathId);
+  if (card) card.classList.toggle('collapsed', collapsedPaths.has(pathId));
+}
+
+// ─────────────────────────────────────────────
+// DATA & STATE
+// ─────────────────────────────────────────────
+const ICONS = ['🎓','💻','📚','🚀','⚡','🔥','💡','🏆','🎯','🌟','🧠','🛠️','📊','🌐','🎮','🏗️','✨','🔬','📱','🎨'];
+const STATUS_CYCLE = ['pending', 'in-progress', 'done'];
+const STATUS_ICONS = { pending: '○', 'in-progress': '◑', done: '✓' };
+const STATUS_LABELS = { pending: 'Pending', 'in-progress': 'In Progress', done: 'Done' };
+
+let selectedIcon = ICONS[0];
+let paths = [];
+
+const DEFAULT_PATH = {
+  id: uid(),
+  name: "Bachelor's Degree",
+  icon: '🎓',
+  years: [
+    { id: uid(), label: '1st Year', sems: [
+      { id: uid(), name: '1st Semester', status: 'pending' },
+      { id: uid(), name: '2nd Semester', status: 'pending' },
+    ]},
+    { id: uid(), label: '2nd Year', sems: [
+      { id: uid(), name: '1st Semester', status: 'pending' },
+      { id: uid(), name: '2nd Semester', status: 'pending' },
+    ]},
+    { id: uid(), label: '3rd Year', sems: [
+      { id: uid(), name: '1st Semester', status: 'pending' },
+      { id: uid(), name: '2nd Semester', status: 'pending' },
+      { id: uid(), name: 'Summer', status: 'pending' },
+    ]},
+    { id: uid(), label: '4th Year', sems: [
+      { id: uid(), name: '1st Semester', status: 'pending' },
+      { id: uid(), name: '2nd Semester', status: 'pending' },
+    ]},
+    { id: uid(), label: 'Career', sems: [
+      { id: uid(), name: 'Apply for Job', status: 'pending' },
+    ]},
+  ]
+};
+
+function uid() {
+  return Math.random().toString(36).slice(2, 10);
+}
+
+// ─────────────────────────────────────────────
+// STORAGE
+// ─────────────────────────────────────────────
+function save() {
+  try {
+    localStorage.setItem('vision_paths', JSON.stringify(paths));
+    const ind = document.getElementById('save-indicator');
+    if (ind) { ind.style.color = 'var(--done)'; setTimeout(() => ind.style.color = '', 1500); }
+  } catch(e) {}
+}
+
+function load() {
+  try {
+    const raw = localStorage.getItem('vision_paths');
+    if (raw) { paths = JSON.parse(raw); return true; }
+  } catch(e) {}
+  return false;
+}
+
+// ─────────────────────────────────────────────
+// ACHIEVEMENTS
+// ─────────────────────────────────────────────
+const ACHIEVEMENTS_DEF = [
+  { id: 'first_step', icon: '🌱', label: 'First Step', desc: 'Complete your first milestone', check: (s) => s.done >= 1 },
+  { id: 'halfway', icon: '⚡', label: 'Halfway There', desc: 'Reach 50% completion', check: (s) => s.pct >= 50 },
+  { id: 'senior', icon: '🎓', label: 'Senior Year', desc: 'Complete 10 milestones', check: (s) => s.done >= 10 },
+  { id: 'champion', icon: '🏆', label: 'Champion', desc: 'Reach 100% completion', check: (s) => s.pct >= 100 },
+  { id: 'multi_path', icon: '🗺️', label: 'Explorer', desc: 'Create 2+ paths', check: (s) => s.pathCount >= 2 },
+];
+
+function renderAchievements(stats) {
+  const bar = document.getElementById('achievements-bar');
+  bar.innerHTML = '';
+  ACHIEVEMENTS_DEF.forEach(a => {
+    const unlocked = a.check(stats);
+    const el = document.createElement('div');
+    el.className = 'achievement' + (unlocked ? ' unlocked' : '');
+    el.innerHTML = `<span class="achievement-icon">${a.icon}</span>${a.label}`;
+    el.title = a.desc;
+    bar.appendChild(el);
+  });
+}
+
+// ─────────────────────────────────────────────
+// STATS
+// ─────────────────────────────────────────────
+function computeStats() {
+  let done = 0, total = 0;
+  paths.forEach(p => p.years.forEach(y => y.sems.forEach(s => {
+    total++;
+    if (s.status === 'done') done++;
+  })));
+  const pct = total ? Math.round(done / total * 100) : 0;
+  return { done, total, pct, pathCount: paths.length };
+}
+
+function getLevelInfo(pct) {
+  if (pct === 0) return { level: 1, label: 'Freshman', xpInLevel: 0, xpForNext: 10 };
+  if (pct < 15) return { level: 2, label: 'Explorer', xpInLevel: pct, xpForNext: 15 };
+  if (pct < 30) return { level: 3, label: 'Achiever', xpInLevel: pct - 15, xpForNext: 15 };
+  if (pct < 50) return { level: 4, label: 'Scholar', xpInLevel: pct - 30, xpForNext: 20 };
+  if (pct < 70) return { level: 5, label: 'Senior', xpInLevel: pct - 50, xpForNext: 20 };
+  if (pct < 90) return { level: 6, label: 'Graduate', xpInLevel: pct - 70, xpForNext: 20 };
+  if (pct < 100) return { level: 7, label: 'Elite', xpInLevel: pct - 90, xpForNext: 10 };
+  return { level: 8, label: 'Legend 🏆', xpInLevel: 10, xpForNext: 10 };
+}
+
+function updateStats() {
+  const s = computeStats();
+  document.getElementById('stat-done').textContent = s.done;
+  document.getElementById('stat-total').textContent = s.total;
+  document.getElementById('stat-pct').textContent = s.pct + '%';
+  const li = getLevelInfo(s.pct);
+  document.getElementById('level-display').textContent = `LVL ${li.level} · ${li.label}`;
+  const barPct = li.xpForNext ? (li.xpInLevel / li.xpForNext * 100) : 100;
+  setTimeout(() => { document.getElementById('xp-bar').style.width = barPct + '%'; }, 100);
+  renderAchievements(s);
+}
+
+// ─────────────────────────────────────────────
+// RENDER
+// ─────────────────────────────────────────────
+function render() {
+  const container = document.getElementById('paths-container');
+  container.innerHTML = '';
+
+  if (paths.length === 0) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-state-icon">🚀</div>
+        <div class="empty-state-title">No Paths Yet</div>
+        <div class="empty-state-text">Click "New Path" to start building<br>your vision and goals.</div>
+      </div>`;
+    updateStats();
+    return;
+  }
+
+  paths.forEach((path, pi) => {
+    const card = document.createElement('div');
+    const isCollapsed = collapsedPaths.has(path.id);
+    card.id = 'card-' + path.id;
+    card.className = 'path-card' + (isCollapsed ? ' collapsed' : '');
+    card.style.animationDelay = (pi * 0.08) + 's';
+
+    // Path stats
+    let pDone = 0, pTotal = 0;
+    path.years.forEach(y => y.sems.forEach(s => { pTotal++; if (s.status === 'done') pDone++; }));
+    const pPct = pTotal ? Math.round(pDone / pTotal * 100) : 0;
+    const offset = 126 - (126 * pPct / 100);
+
+    // Mini sem status pills for collapsed preview
+    let allSems = [];
+    path.years.forEach(y => y.sems.forEach(s => allSems.push(s)));
+    const previewPills = allSems.slice(0, 5).map(s => {
+      const col = s.status === 'done' ? 'var(--done)' : s.status === 'in-progress' ? 'var(--pending)' : 'var(--border)';
+      return `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${col};opacity:0.8;"></span>`;
+    }).join('');
+    const moreCount = allSems.length > 5 ? `<span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);">+${allSems.length-5}</span>` : '';
+
+    card.innerHTML = `
+      <div class="path-header" onclick="togglePath('${path.id}')" title="${isCollapsed ? 'Expand' : 'Collapse'} path">
+        <div class="path-title-group">
+          <div class="path-icon">${path.icon}</div>
+          <div style="display:flex;flex-direction:column;gap:4px;flex:1;min-width:0;">
+            <input class="path-name-input" value="${escHtml(path.name)}" 
+                   onchange="renamePath('${path.id}', this.value)"
+                   onclick="event.stopPropagation()"
+                   placeholder="Path name..." />
+            <div style="display:flex;align-items:center;gap:6px;">${previewPills}${moreCount}</div>
+          </div>
+        </div>
+        <div class="path-actions" onclick="event.stopPropagation()">
+          <div class="path-progress-ring">
+            <svg width="48" height="48" viewBox="0 0 48 48">
+              <circle class="ring-bg" cx="24" cy="24" r="20" fill="none" stroke-width="3"/>
+              <circle class="ring-fill" id="ring-${path.id}" cx="24" cy="24" r="20" fill="none" stroke-width="3"
+                      stroke-dasharray="126" stroke-dashoffset="${offset}"/>
+            </svg>
+            <div class="ring-label">${pPct}%</div>
+          </div>
+          <button class="btn" onclick="addYear('${path.id}')" title="Add Year">＋ Year</button>
+          <button class="btn btn-danger" onclick="deletePath('${path.id}')" title="Delete Path">✕</button>
+        </div>
+        <div class="path-chevron">▼</div>
+      </div>
+      <div class="timeline-wrapper">
+        <div class="timeline-inner">
+          <div class="timeline" id="timeline-${path.id}">
+            ${renderYears(path)}
+            <button class="add-year-btn" onclick="addYear('${path.id}')">
+              ＋ Add Year / Stage
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+
+  updateStats();
+}
+
+function renderYears(path) {
+  const ordinals = ['1st','2nd','3rd','4th','5th','6th','7th','8th'];
+  return path.years.map((year, yi) => `
+    <div class="year-group" id="year-${year.id}">
+      <div class="year-label">
+        <div class="year-dot"><div class="year-dot-inner"></div></div>
+        <span class="year-text">
+          <input style="background:transparent;border:none;outline:none;font:inherit;color:inherit;width:120px;cursor:text;"
+                 value="${escHtml(year.label)}"
+                 onchange="renameYear('${path.id}','${year.id}',this.value)" />
+        </span>
+        <span class="year-badge">${year.sems.filter(s=>s.status==='done').length}/${year.sems.length} done</span>
+        <button class="btn btn-danger" style="padding:4px 8px;font-size:10px;" 
+                onclick="deleteYear('${path.id}','${year.id}')" title="Delete year">✕</button>
+      </div>
+      <div class="sems-list" id="sems-${year.id}">
+        ${year.sems.map(sem => renderSem(path.id, year.id, sem)).join('')}
+        <button class="add-sem-btn" onclick="addSem('${path.id}','${year.id}')">
+          ＋ Add Milestone
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderSem(pathId, yearId, sem) {
+  const tagClass = sem.status === 'done' ? 'tag-done' : sem.status === 'in-progress' ? 'tag-progress' : 'tag-pending';
+  const itemClass = sem.status === 'done' ? 'done' : sem.status === 'in-progress' ? 'in-progress' : '';
+  return `
+    <div class="sem-item ${itemClass}" id="sem-${sem.id}">
+      <button class="status-btn" onclick="cycleStatus('${pathId}','${yearId}','${sem.id}')"
+              title="Click to change status">
+        ${STATUS_ICONS[sem.status]}
+      </button>
+      <input class="sem-name-input" value="${escHtml(sem.name)}"
+             onchange="renameSem('${pathId}','${yearId}','${sem.id}',this.value)"
+             placeholder="Milestone name..." />
+      <span class="sem-status-tag ${tagClass}">${STATUS_LABELS[sem.status]}</span>
+      <button class="delete-item-btn" onclick="deleteSem('${pathId}','${yearId}','${sem.id}')">✕</button>
+    </div>
+  `;
+}
+
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ─────────────────────────────────────────────
+// ACTIONS
+// ─────────────────────────────────────────────
+function cycleStatus(pathId, yearId, semId) {
+  const sem = getSem(pathId, yearId, semId);
+  if (!sem) return;
+  const idx = STATUS_CYCLE.indexOf(sem.status);
+  sem.status = STATUS_CYCLE[(idx + 1) % STATUS_CYCLE.length];
+  save();
+  // Update just this item + stats (partial re-render for smoothness)
+  const el = document.getElementById('sem-' + semId);
+  if (el) {
+    const newEl = document.createElement('div');
+    newEl.innerHTML = renderSem(pathId, yearId, sem);
+    el.replaceWith(newEl.firstElementChild);
+  }
+  // Update ring & badges
+  updatePathRing(pathId);
+  updateStats();
+  if (sem.status === 'done') showToast('✓ Milestone complete! +XP', 'success');
+}
+
+function renamePath(id, val) {
+  const p = paths.find(p => p.id === id);
+  if (p) { p.name = val; save(); }
+}
+
+function renameYear(pathId, yearId, val) {
+  const year = getYear(pathId, yearId);
+  if (year) { year.label = val; save(); }
+}
+
+function renameSem(pathId, yearId, semId, val) {
+  const sem = getSem(pathId, yearId, semId);
+  if (sem) { sem.name = val; save(); }
+}
+
+function addYear(pathId) {
+  const p = paths.find(p => p.id === pathId);
+  if (!p) return;
+  const num = p.years.length + 1;
+  const ordinals = ['1st','2nd','3rd','4th','5th','6th','7th','8th'];
+  p.years.push({ id: uid(), label: (ordinals[num-1]||num+'th') + ' Year', sems: [
+    { id: uid(), name: '1st Semester', status: 'pending' },
+    { id: uid(), name: '2nd Semester', status: 'pending' },
+  ]});
+  save(); render();
+  showToast('Year added!');
+}
+
+function addSem(pathId, yearId) {
+  const year = getYear(pathId, yearId);
+  if (!year) return;
+  year.sems.push({ id: uid(), name: 'New Milestone', status: 'pending' });
+  save(); render();
+}
+
+function deletePath(id) {
+  if (!confirm('Delete this path?')) return;
+  paths = paths.filter(p => p.id !== id);
+  save(); render();
+  showToast('Path deleted', 'warning');
+}
+
+function deleteYear(pathId, yearId) {
+  const p = paths.find(p => p.id === pathId);
+  if (!p) return;
+  if (!confirm('Delete this year/stage?')) return;
+  p.years = p.years.filter(y => y.id !== yearId);
+  save(); render();
+}
+
+function deleteSem(pathId, yearId, semId) {
+  const year = getYear(pathId, yearId);
+  if (!year) return;
+  year.sems = year.sems.filter(s => s.id !== semId);
+  save(); render();
+}
+
+function updatePathRing(pathId) {
+  const p = paths.find(p => p.id === pathId);
+  if (!p) return;
+  let done = 0, total = 0;
+  p.years.forEach(y => y.sems.forEach(s => { total++; if (s.status === 'done') done++; }));
+  const pct = total ? Math.round(done / total * 100) : 0;
+  const offset = 126 - (126 * pct / 100);
+  const ring = document.getElementById('ring-' + pathId);
+  const label = ring?.closest('.path-progress-ring')?.querySelector('.ring-label');
+  if (ring) ring.style.strokeDashoffset = offset;
+  if (label) label.textContent = pct + '%';
+  // Update year badges
+  p.years.forEach(y => {
+    const badge = document.querySelector(`#year-${y.id} .year-badge`);
+    if (badge) badge.textContent = `${y.sems.filter(s=>s.status==='done').length}/${y.sems.length} done`;
+  });
+}
+
+// ─────────────────────────────────────────────
+// HELPERS
+// ─────────────────────────────────────────────
+function getYear(pathId, yearId) {
+  return paths.find(p=>p.id===pathId)?.years.find(y=>y.id===yearId);
+}
+
+function getSem(pathId, yearId, semId) {
+  return getYear(pathId, yearId)?.sems.find(s=>s.id===semId);
+}
+
+// ─────────────────────────────────────────────
+// MODAL
+// ─────────────────────────────────────────────
+function openAddPathModal() {
+  selectedIcon = ICONS[0];
+  document.getElementById('new-path-name').value = '';
+  buildIconGrid();
+  document.getElementById('add-path-modal').classList.add('open');
+  setTimeout(() => document.getElementById('new-path-name').focus(), 100);
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+}
+
+function buildIconGrid() {
+  const grid = document.getElementById('icon-grid');
+  grid.innerHTML = '';
+  ICONS.forEach(ic => {
+    const el = document.createElement('div');
+    el.className = 'icon-opt' + (ic === selectedIcon ? ' selected' : '');
+    el.textContent = ic;
+    el.onclick = () => {
+      selectedIcon = ic;
+      grid.querySelectorAll('.icon-opt').forEach(e => e.classList.remove('selected'));
+      el.classList.add('selected');
+    };
+    grid.appendChild(el);
+  });
+}
+
+function confirmAddPath() {
+  const name = document.getElementById('new-path-name').value.trim() || 'New Path';
+  paths.push({
+    id: uid(),
+    name,
+    icon: selectedIcon,
+    years: [
+      { id: uid(), label: '1st Year', sems: [
+        { id: uid(), name: '1st Semester', status: 'pending' },
+        { id: uid(), name: '2nd Semester', status: 'pending' },
+      ]},
+    ]
+  });
+  save(); render();
+  closeModal('add-path-modal');
+  showToast('🚀 New path created!', 'success');
+}
+
+// Close modal on overlay click
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) overlay.classList.remove('open');
+  });
+});
+
+// ─────────────────────────────────────────────
+// EXPORT / IMPORT
+// ─────────────────────────────────────────────
+function exportData() {
+  const blob = new Blob([JSON.stringify(paths, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'my-vision-paths.json';
+  a.click();
+  showToast('Exported!', 'success');
+}
+
+function importData() {
+  const input = document.createElement('input');
+  input.type = 'file'; input.accept = '.json';
+  input.onchange = e => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = ev => {
+      try {
+        const data = JSON.parse(ev.target.result);
+        if (Array.isArray(data)) {
+          paths = data; save(); render();
+          showToast('Imported!', 'success');
+        }
+      } catch { showToast('Invalid file', 'warning'); }
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+}
+
+function clearAll() {
+  if (!confirm('Clear all paths? This cannot be undone.')) return;
+  paths = []; save(); render();
+  showToast('Cleared', 'warning');
+}
+
+function collapseAll() {
+  paths.forEach(p => collapsedPaths.add(p.id));
+  saveCollapsed();
+  document.querySelectorAll('.path-card').forEach(c => c.classList.add('collapsed'));
+  showToast('All paths collapsed');
+}
+
+function expandAll() {
+  collapsedPaths.clear();
+  saveCollapsed();
+  document.querySelectorAll('.path-card').forEach(c => c.classList.remove('collapsed'));
+  showToast('All paths expanded');
+}
+
+// ─────────────────────────────────────────────
+// TOAST
+// ─────────────────────────────────────────────
+let toastTimer;
+function showToast(msg, type = '') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + type;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ─────────────────────────────────────────────
+// PARTICLES
+// ─────────────────────────────────────────────
+function spawnParticles() {
+  for (let i = 0; i < 12; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.animationDuration = (8 + Math.random() * 12) + 's';
+    p.style.animationDelay = (Math.random() * 15) + 's';
+    p.style.opacity = Math.random() * 0.5;
+    p.style.background = Math.random() > 0.5 ? 'var(--accent)' : 'var(--accent3)';
+    p.style.width = p.style.height = (1 + Math.random() * 3) + 'px';
+    document.body.appendChild(p);
+  }
+}
+
+// ─────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────
+function init() {
+  spawnParticles();
+  loadCollapsed();
+  if (!load()) {
+    paths = [JSON.parse(JSON.stringify(DEFAULT_PATH))];
+    // Give new uids
+    paths[0].id = uid();
+    paths[0].years.forEach(y => {
+      y.id = uid();
+      y.sems.forEach(s => s.id = uid());
+    });
+    save();
+  }
+  render();
+}
+
+init();
+</script>
+</body>
+</html>
